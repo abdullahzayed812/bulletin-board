@@ -5,6 +5,7 @@ interface PostItemPropType {
   id: string;
   title: string;
   content: string;
+  userID?: number | string;
 }
 
 interface InitialState {
@@ -33,12 +34,14 @@ const postsSlice = createSlice({
   reducers: {
     addPost: {
       reducer(state, action: PayloadAction<PostItemPropType>) {
+        console.log(action.payload);
         state.posts.push(action.payload);
       },
-      prepare(title: string, content: string) {
+      prepare(title: string, content: string, userID: number | string) {
         return {
           payload: {
             id: nanoid(),
+            userID,
             title,
             content,
           },
