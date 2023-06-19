@@ -93,3 +93,7 @@ button {
 p {
   margin-bottom: 10px;
 }
+
+span:nth-child(2) {
+  margin-left: 50px;
+}

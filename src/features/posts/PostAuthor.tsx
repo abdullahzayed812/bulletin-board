@@ -11,5 +11,5 @@ export const PostAuthor: React.FC<Props> = ({ userID }) => {
 
   const author = users.find((user) => user.id === userID);
 
-  return <p>By {author ? author.name : "Unknown Author"}</p>;
+  return <span>By {author ? author.name : "Unknown Author"}</span>;
 };

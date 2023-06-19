@@ -1,11 +1,13 @@
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import { sub } from "date-fns";
 
 interface PostItemPropType {
   id: string;
   title: string;
   content: string;
   userID?: number | string;
+  date: string;
 }
 
 interface InitialState {
@@ -19,11 +21,13 @@ const initialState: InitialState = {
       title: "Learning Redux Toolkit",
       content:
         "I love heard good things about javascript programming language and their frameworks. ",
+      date: sub(new Date(), { minutes: 10 }).toISOString(),
     },
     {
       id: "2",
       title: "Slices....",
       content: "Now i learn how to create slice and manage state of my app. ",
+      date: sub(new Date(), { minutes: 5 }).toISOString(),
     },
   ],
 };
@@ -44,6 +48,7 @@ const postsSlice = createSlice({
             userID,
             title,
             content,
+            date: new Date().toISOString(),
           },
         };
       },
